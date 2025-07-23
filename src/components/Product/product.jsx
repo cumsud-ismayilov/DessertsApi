@@ -1,4 +1,4 @@
-function product( {product,setIsModal,setSelectedPro}) {
+function product( {product,setIsModal,setSelectedPro ,addToCart }) {
   const {img,name,price} = product
   return (
     <div className="p-[5px] shadow-sm ">
@@ -17,7 +17,7 @@ function product( {product,setIsModal,setSelectedPro}) {
         }}
       />
       <div className="p-[30px]">
-        <button className="cursor-pointer" aria-label="Add to cart">
+        <button className="cursor-pointer" aria-label="Add to cart" onClick={() => addToCart(product)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

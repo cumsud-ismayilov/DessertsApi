@@ -1,13 +1,18 @@
+import { useState } from "react";
 import Product from "../Product/product";
 import { data } from "../../db/index";
+import DetailModal from "../DetailModal/DetailModal";
+
 function products({searchVal}) {
- 
+ const [isModal, setIsModal] = useState(false)
+ const [selectedPro, setSelectedPro] = useState({})
     
   return (
     <section id="products" className="grid grid-cols-4 gap-4">
         {
-            data.filter(item => item.name.toLowerCase().includes(searchVal)).map(item => <Product name = {item.name} price = {item.price} img = {item.img}/>)
+            data.filter(item => item.name.toLowerCase().includes(searchVal)).map(item => <Product  product = {item} setSelectedPro = {setSelectedPro} setIsModal = {setIsModal} key ={item.id}/>)
         }
+        {isModal && <DetailModal setIsModal= {setIsModal} selectedPro = {selectedPro}/>}
     </section>
   );
 }

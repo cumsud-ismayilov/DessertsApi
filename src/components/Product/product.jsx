@@ -1,14 +1,19 @@
-function product(item) {
+function product( {product,setIsModal,setSelectedPro}) {
+  const {img,name,price} = product
   return (
     <div className="p-[5px] shadow-sm ">
       <img
         className=" w-full h-[270px] object-cover cursor-pointer"
-        src={item.img}
+        src={img}
         alt="pizzasimg"
         onError={(e) => {
           e.target.onerror = null; // Təkrar onError çağırılmasın
           e.target.src =
             "https://static.vecteezy.com/system/resources/previews/007/872/974/non_2x/file-not-found-illustration-with-confused-people-holding-big-magnifier-search-no-result-data-not-found-concept-can-be-used-for-website-landing-page-animation-etc-vector.jpg";
+        }}
+        onClick={() => {
+          setIsModal(true)
+          setSelectedPro(product)
         }}
       />
       <div className="p-[30px]">
@@ -32,8 +37,8 @@ function product(item) {
             />
           </svg>
         </button>
-        <h3 className="text-[20px] font-[700] text-[#2D3142]">{item.name}</h3>
-        <p className="text-[#2D3142] text-[15px]">{item.price} AZN</p>
+        <h3 className="text-[20px] font-[700] text-[#2D3142]">{name}</h3>
+        <p className="text-[#2D3142] text-[15px]">{price} AZN</p>
       </div>
     </div>
   );
